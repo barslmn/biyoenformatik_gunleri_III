@@ -1,0 +1,231 @@
+Python ile Akış Hatlarının
+      Otomatizasyonu
+\
+\
+                      Barış Salman
+                         25/05/2019
+                               Ankara
+
+@images/logos.png
+
+@screenshots/Borulama.png
+
+@screenshots/Pipeline.png
+
+🌾 ▸ 🍞 ▸
+🐄 ▸ 🥛 ▸ 🧀 ▸    🥪
+🐔 ▸ 🍗 ▸
+
+Unix Shell Pipe'ı
+           |
+
+                grep bindsym ~/.config/i3/config | \
+sed "s/\$mod/Mod/;s/ exec//g;/^\\s/d;/^#/d" | \
+                                                             sort | \
+                               sed 's/bindsym /\.PP\n/' | \
+                                          groff -ms -T pdf | \
+                                                     zathura -
+
+stdin/stdout
+      🥪 😋
+
+Biyoenformatik yazılımları hepsi
+(GATK gibi) stdin/stdout kullanmıyor.
+
+@screenshots/wiki_interfaces.png
+
+En Tanınan Arayüzler
+• Grafik
+• Web Tabanlı
+• Komut Satırı
+
+En Tanınan Arayüzler
+• G̶r̶a̶f̶i̶k̶
+• W̶e̶b̶ ̶T̶a̶b̶a̶n̶l̶ı̶
+• Komut Satırı 😋
+
+@images/pipelines.jpg
+
+Akış Hatları Kullanılan Alanlar
+• Birden fazla dosyanın
+    birden fazla işlemden
+    geçmesi gerektiği
+    herhangi bir durum
+
+Klinik Genetik
+     ▸ Dizi Analizi
+         • Hizalama
+         • SAM/BAM Manipülasyonları
+         • Rekalibrasyon
+         • Varyant Çağırma
+     ▸ Varyant Yorumlama
+         • Varyant Anotasyonu
+         • Sınıflandırma
+     ▸ Varyantların Raporlanması
+
+@screenshots/pigeon_structure.png
+
+pigeon.py İşlevi
+\
+Bu dosya, kullanıcının komut satırı
+ile programa erişimini sağlar.
+Kullanıcının verdiği argümanlar
+burada ayrıştırılarak uygun işlemler çağrılır.
+
+parseconfig.py İşlevi
+\
+Bu dosya, yazılıma sağlanan yapılandırma
+dosyası içerisinde geçen argümanları
+ayrıştırarak kullanıma hazır hale getirir.
+
+pipeline.py İşlevi
+\
+Bu dosya, yazılımın temeli olup sağlanan
+argümanları bir araya getirerek
+akış hattında kullanılacak
+komutları oluşturur.
+
+runpipe.py İşlevi
+\
+Bu dosya, akış hattı çalıştırıldığında
+pipeline.py tarafından oluşturulan
+komutları kabuğa(shell) geçirerek
+çalıştırılmasını sağlar.
+
+@screenshots/pigeon_output.png
+
+@screenshots/example_conf.png
+
+PROJECT Bölümü
+\
+Bu bölüm içerisinde
+çalışmalar arası
+değişebilecek
+argümanlar tanımlanır.
+
+PROJECT Bölümü Parametreleri
+\
+• project_name
+    ▸ Çalışmaya özgü isim
+• output_dir
+    ▸ Çıktıların yazılacağı klasör
+• input_files
+    ▸ Girdi dosyaları
+• input_names
+    ▸ Girdi dosyalarının isimleri
+
+GENERAL Bölümü
+\
+Bu bölüm içerisinde
+çalışmalar arası
+değişmeyecek
+argümanlar tanımlanır.
+
+GENERAL Bölümü
+\
+• referans genom,
+• popülasyon varyasyon verisi
+• kullanılan yazılımların gereksinimi
+
+INCLUDE Bölümü
+\
+Bu bölüm içerisinde
+diğer akış hattı yapılandırma
+dosyaları eklenebilir.
+
+INCLUDE Bölümü
+\
+Böylece birden fazla
+akış hattında kullanılan
+ya da tekrarlı kısımlar
+modüllere çevrilerek kullanılabilir.
+
+INCLUDE Bölümü
+\
+Bu kısımda tanımlanan
+değişkenler daha sonra
+\
+[INCLUDE:değişken]
+\
+formatında işlem olarak kullanılabilir.
+
+PIPELINE Bölümü
+\
+Bu bölüm içerisinde
+tanımlanan her işlemin
+çalıştırma sırası yazılır.
+
+İşlem(Task) Bölümü
+\
+İşlem bölümünde
+çalıştırılacak her işlemin
+girdisini, çıktısını,
+işlem argüman ve
+parametrelerini
+işleme özel olarak verilir.
+
+İşlem(Task) Bölümü
+\
+Bu bölümlerin isimlendirmesi
+kullanıcı tarafından yapılır.
+
+
+İşlem Bölümü Özel Değişkenler
+\
+• input_placeholder
+    ▸ İşlemin girdi dosyasının yerini turar
+• output_placeholder
+    ▸ İşlemin çıktı dosyasının yerini tutar.
+
+İşlem Bölümü Parametreleri
+\
+• tool
+    ▸ Çalışacak yazılımın ismi 
+• sub_tool
+    ▸ İşlemin alt komutu
+
+İşlem Bölümü Parametreleri
+\
+• input_from
+    ▸ Çalışacak işlemin girdisi
+• input_multi
+    ▸ İşlemin girdileri çoklu alması
+
+İşlem Bölümü Parametreleri
+\
+• args
+    ▸ İşlemin argüman ve parametreleri
+• container
+    ▸ İşlemin çalışacağı konteyner
+
+İşlem Bölümü Parametreleri
+\
+• ext
+    ▸ İşlem çıktı dosyalarının uzantısı
+• suffix
+    ▸ İşlem çıktı dosya isimlerine ek
+
+Kullanılan Temel Programlama
+                 Konseptleri
+\
+• String Manupilations
+• Dictionaries
+
+Nerde Bulurum?
+• github.com/barslmn/pigeon
+• pypi.com/barslmn/seq-pigeon
+
+Özellikler
+    ▸ Modüler
+    ▸ Konteynır
+    ▸ Farklı Girdi/Çıktı
+
+Eksikler
+    ▸ Task içi paralellik
+    ▸ Tasklar arası paralellik
+    ▸ Dağıtık Hesaplama
+
+Teşekkürler
+
+E-posta: 
+baris.salman@gen-era.com.tr
