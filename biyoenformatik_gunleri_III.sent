@@ -63,6 +63,12 @@ Klinik Genetik
          • Sınıflandırma
      ▸ Varyantların Raporlanması
 
+Kullanılan Temel Programlama
+                 Konseptleri
+\
+• String Manupilations
+• Dictionaries
+
 @screenshots/pigeon_structure.png
 
 pigeon.py İşlevi
@@ -180,7 +186,7 @@ kullanıcı tarafından yapılır.
 İşlem Bölümü Parametreleri
 \
 • tool
-    ▸ Çalışacak yazılımın ismi 
+    ▸ Çalışacak yazılımın ismi
 • sub_tool
     ▸ İşlemin alt komutu
 
@@ -205,21 +211,21 @@ kullanıcı tarafından yapılır.
 • suffix
     ▸ İşlem çıktı dosya isimlerine ek
 
-Kullanılan Temel Programlama
-                 Konseptleri
-\
-• String Manupilations
-• Dictionaries
-
 Nerde Bulurum?
 • github.com/barslmn/pigeon
-• pypi.com/barslmn/seq-pigeon
+• pypi.org/project/seq-pigeon
 
+@screenshots/downloads.png
+
+Özet
+\
 Özellikler
     ▸ Modüler
     ▸ Konteynır
     ▸ Farklı Girdi/Çıktı
 
+Özet
+\
 Eksikler
     ▸ Task içi paralellik
     ▸ Tasklar arası paralellik
@@ -227,5 +233,5 @@ Eksikler
 
 Teşekkürler
 
-E-posta: 
+E-posta:
 baris.salman@gen-era.com.tr
